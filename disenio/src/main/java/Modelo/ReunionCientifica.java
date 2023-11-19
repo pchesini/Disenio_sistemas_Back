@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-class ReunionCientifica {
+public class ReunionCientifica {
      
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
-/*
+
 import Modelo.RegistroPropiedadIntelectual;
 import Service.IRegistroPropiedadIntelectual;
 import java.util.List;
@@ -19,48 +19,46 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("registroPropiedadIntelectual")
+@RequestMapping("registroIntelectual")
 public class RegistroPropiedadIntelectualController {
      @Autowired
-    private IRegistroPropiedadIntelectual registroPropiedadIntelectualI;
+    private IRegistroPropiedadIntelectual registroIntelectualI;
 
     @GetMapping("/consulta")
     public List<RegistroPropiedadIntelectual> getRegistroPropiedadIntelectual(){
-        return registroPropiedadIntelectualI.getRegistroPropiedadIntelectual();
+        return registroIntelectualI.getRegistroPropiedadIntelectual();
     }
 
     @PostMapping("/alta")
     public String saveRegistroPropiedadIntelectual(@RequestBody RegistroPropiedadIntelectual of){
-        registroPropiedadIntelectualI.saveRegistroPropiedadIntelectual(of);
+        registroIntelectualI.saveRegistroPropiedadIntelectual(of);
         return "Se creo el Registro Propiedad Intelectual Correctamente";
     }
 
     @DeleteMapping("/baja/{id}")
     public String deleteRegistroPropiedadIntelectual(@PathVariable Long id) {
-        registroPropiedadIntelectualI.deleteRegistroPropiedadIntelectual(id);
+        registroIntelectualI.deleteRegistroPropiedadIntelectual(id);
         return " Registro Propiedad Intelectual Eliminada";
     }
 
     @PutMapping ("/editar/{id}")
     public RegistroPropiedadIntelectual editarRegistroPropiedadIntelectual(@PathVariable Long id,
-                               @RequestParam("nombreRegistro") String nuevoRegistro,
-                               @RequestParam("disenoRegistro") String nuevoDiseno,
-                               @RequestParam("modeloUtilidadRegistro") String nuevoModeloUtilidad,
-                               @RequestParam("modeloIndustrialRegistro") String nuevoModeloIndustrial,
-                               @RequestParam("patenteRegistro") String nuevaPatente,
-                               @RequestParam("titularRegistro") String nuevoTitular,@RequestParam("marcaRegistro") String nuevaMarca){
-        RegistroPropiedadIntelectual registroPropiedadIntelectual = registroPropiedadIntelectualI.buscarRegistroPropiedadIntelectual(0);
-        registroPropiedadIntelectual.setNombrePropiedad(nuevoRegistro);
-        registroPropiedadIntelectual.setDiseños(nuevoDiseno);
-        registroPropiedadIntelectual.setModelosDeUtilidad(nuevoModeloUtilidad);
-        registroPropiedadIntelectual.setModelosIndustriales(nuevoModeloIndustrial);
-        registroPropiedadIntelectual.setPatenteDeInvencion(nuevaPatente);
-        registroPropiedadIntelectual.setTitularPropiedad(nuevoTitular);
-        registroPropiedadIntelectual.setMarca(marca);
+                               @RequestParam("diseño") String nuevodiseño,
+                               @RequestParam("modelosDeUtilidad") String nuevomodelosDeUtilidad,
+                               @RequestParam("modelosIndustriales") String nuevomodelosIndustriales,
+                               @RequestParam("nombrePropiedad") String nuevonombrePropiedad,
+                               @RequestParam("patenteDeInvencion") String nuevapatenteDeInvencion,
+                               @RequestParam("titularPropiedad") String nuevoTitular){
+        RegistroPropiedadIntelectual regPropiedadIntel = registroIntelectualI.buscarRegistroPropiedadIntelectual(id);
+        regPropiedadIntel.setDiseño(nuevodiseño);
+        regPropiedadIntel.setModelosDeUtilidad(nuevomodelosDeUtilidad);
+        regPropiedadIntel.setModelosIndustriales(nuevomodelosIndustriales);
+        regPropiedadIntel.setNombrePropiedad(nuevonombrePropiedad);
+        regPropiedadIntel.setPatenteDeInvencion(nuevapatenteDeInvencion);
+        regPropiedadIntel.setTitularPropiedad(nuevonombrePropiedad);
+        ;
+        registroIntelectualI.saveRegistroPropiedadIntelectual(regPropiedadIntel);
 
-        registroPropiedadIntelectualI.saveRegistroPropiedadIntelectual(registroPropiedadIntelectual);
-
-        return registroPropiedadIntelectual;
+        return regPropiedadIntel;
     }
 }
-*/

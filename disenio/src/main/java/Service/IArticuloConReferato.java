@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface IArticuloConReferato {
-      public List<ArticuloConReferato> getArticuloConReferato();
+    public List<ArticuloConReferato> getArticuloConReferato();
     public void saveArticuloConReferato(ArticuloConReferato of);
     public void deleteArticuloConReferato(Long id);
     public ArticuloConReferato buscarArticuloConReferato(long id);

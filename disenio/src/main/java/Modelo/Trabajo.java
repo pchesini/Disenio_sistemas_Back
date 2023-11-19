@@ -19,9 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@Data
-class Trabajo {
+public class Trabajo {
      @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
@@ -31,6 +29,20 @@ class Trabajo {
     private String nombreDeRevista;
     private String pais;
     private String tituloDeTrabajo;
+
+    public Trabajo() {
+    }
+
+    public Trabajo(Long id, String editorial, String issn, String nombreDeRevista, String pais, String tituloDeTrabajo, Autor autor) {
+        this.id = id;
+        this.editorial = editorial;
+        this.issn = issn;
+        this.nombreDeRevista = nombreDeRevista;
+        this.pais = pais;
+        this.tituloDeTrabajo = tituloDeTrabajo;
+        this.autor = autor;
+    }
+    
     
     @OneToMany
     @JoinColumn (name="id_autor")

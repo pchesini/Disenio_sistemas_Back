@@ -11,16 +11,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@Data
 public class RegistroPropiedadIndustrial {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -29,6 +26,19 @@ public class RegistroPropiedadIndustrial {
     private String nombrePropiedad;
     private String tipoLicencia; //Es un enum en el diagrama de clases
     private String titularPropiedad;
+
+    public RegistroPropiedadIndustrial() {
+    }
+
+    public RegistroPropiedadIndustrial(Long id, String nombrePropiedad, String tipoLicencia, String titularPropiedad, Marca marca) {
+        this.id = id;
+        this.nombrePropiedad = nombrePropiedad;
+        this.tipoLicencia = tipoLicencia;
+        this.titularPropiedad = titularPropiedad;
+        this.marca = marca;
+    }
+    
+    
     
     @OneToOne
     @JoinColumn (name="id_marca")

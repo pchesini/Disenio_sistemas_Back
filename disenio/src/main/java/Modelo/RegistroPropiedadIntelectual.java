@@ -11,19 +11,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-
 public class RegistroPropiedadIntelectual {
       @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     @Basic
-    private String diseños;
+    private String diseño;
     private String modelosDeUtilidad;
     private String modelosIndustriales;
     private String nombrePropiedad;
@@ -35,7 +30,7 @@ public class RegistroPropiedadIntelectual {
 
     public RegistroPropiedadIntelectual(Long id, String diseños, String modelosDeUtilidad, String modelosIndustriales, String nombrePropiedad, String patenteDeInvencion, String titularPropiedad, Marca marca) {
         this.id = id;
-        this.diseños = diseños;
+        this.diseño = diseño;
         this.modelosDeUtilidad = modelosDeUtilidad;
         this.modelosIndustriales = modelosIndustriales;
         this.nombrePropiedad = nombrePropiedad;
@@ -52,12 +47,12 @@ public class RegistroPropiedadIntelectual {
         this.id = id;
     }
 
-    public String getDiseños() {
-        return diseños;
+    public String getDiseño() {
+        return diseño;
     }
 
-    public void setDiseños(String diseños) {
-        this.diseños = diseños;
+    public void setDiseño(String diseños) {
+        this.diseño = diseño;
     }
 
     public String getModelosDeUtilidad() {
