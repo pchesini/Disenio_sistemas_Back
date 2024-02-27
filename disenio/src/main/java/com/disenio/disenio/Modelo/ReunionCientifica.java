@@ -8,9 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class ReunionCientifica {
@@ -18,15 +16,16 @@ public class ReunionCientifica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected LocalDateTime fechaInicio;
+    protected LocalDate fechaInicio;
     protected String expositor;
     protected String tituloTrabajo;
     protected boolean eliminado= false;
+    protected String autor; 
 
     public ReunionCientifica() {
     }
 
-    public ReunionCientifica(Long id, LocalDateTime fechaInicio, String expositor, String tituloTrabajo, Autor autor) {
+    public ReunionCientifica(Long id, LocalDate fechaInicio, String expositor, String tituloTrabajo, String autor) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.expositor = expositor;
@@ -34,11 +33,13 @@ public class ReunionCientifica {
         this.autor = autor;
     }
 
- 
+  
+
+ /*
      @ManyToOne
     @JoinColumn (name="id_autor")
     private Autor autor;
-
+*/
     public Long getId() {
         return id;
     }
@@ -47,20 +48,22 @@ public class ReunionCientifica {
         this.id = id;
     }
 
-    public Autor getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutor(Autor autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
+
+  
      
 
-    public LocalDateTime getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDateTime fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 

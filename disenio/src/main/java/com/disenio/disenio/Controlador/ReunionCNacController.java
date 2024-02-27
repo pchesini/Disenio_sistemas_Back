@@ -8,14 +8,19 @@ package com.disenio.disenio.Controlador;
 import com.disenio.disenio.Exepciones.ReunionNotFoundException;
 import com.disenio.disenio.Modelo.ReunionCNac;
 import com.disenio.disenio.Service.ReunionCNacService;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -45,14 +50,34 @@ public class ReunionCNacController {
          reunionS.deleteReunion(id);
          return ("Reunion eliminada");
      }
-    /*@PutMapping ("/editar/{id}")
+    /*
+     @PutMapping ("/editar/{id}")
     public ReunionCNac editarReunion(@PathVariable Long id,
-                               @RequestParam("nombrePropiedad") String nuevoNombre,
-                               @RequestParam("tipoLicencia") String nuevoTipo,
-                               @RequestParam("titularPropiedad") String nuevoTitular) {
-        ReunionCNac reunion = regPropIndustrialI.buscarRegistroPropiedadIndustrial(id);
-        reunion.setNombrePropiedad(nuevoNombre);
-        reunion.setTipoLicencia(nuevoTipo);
-        reunion.setTitularPropiedad(nuevoTitular);
-*/
+                               @RequestParam("fechaInicio") String nuevaFechaInicio,
+                               @RequestParam("expositor") String nuevoExpositor,
+                               @RequestParam("tituloTrabajo") String nuevoTituloTrabajo,
+                               @RequestParam("autor") String nuevoAutor,
+                               @RequestParam("ciudad") String nuevaCiudad) {
+        ReunionCNac reunion = reunionS.buscarReunion(id);
+        reunion.setFechaInicio(LocalDate.MIN);
+        reunion.setExpositor(nuevoExpositor);
+        reunion.setTituloTrabajo(nuevoTituloTrabajo);
+        reunion.setAutor(nuevoAutor);
+        reunion.setCiudad(nuevaCiudad);
+        reunionS.crearReunion(reunion);
+        return reunion;
+  }*/
+    @PutMapping ("/editar/{id}")
+    public ReunionCNac editarReunion(@PathVariable Long id, @RequestBody ReunionCNac reunionActualizada) {
+    ReunionCNac reunion = reunionS.buscarReunion(id);
+    reunion.setFechaInicio(reunionActualizada.getFechaInicio());
+    reunion.setExpositor(reunionActualizada.getExpositor());
+    reunion.setTituloTrabajo(reunionActualizada.getTituloTrabajo());
+    reunion.setAutor(reunionActualizada.getAutor());
+    reunion.setCiudad(reunionActualizada.getCiudad());
+    
+    return reunionS.crearReunion(reunion);
+    }
+    
 }
+

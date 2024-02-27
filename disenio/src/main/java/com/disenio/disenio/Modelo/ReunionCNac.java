@@ -8,21 +8,17 @@ import java.time.LocalDateTime;
 
 @Entity
 public class ReunionCNac extends ReunionCientifica {
-   
-    
+  
      @Basic
     private String ciudad;
 
+     
+     
     public ReunionCNac() {
-        // Constructor sin argumentos necesario para JPA
+       
     }
 
     public ReunionCNac(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public ReunionCNac(String ciudad, Long id, LocalDateTime fechaInicio, String expositor, String tituloTrabajo, Autor autor) {
-        super(id, fechaInicio, expositor, tituloTrabajo, autor);
         this.ciudad = ciudad;
     }
 

@@ -7,7 +7,6 @@ package com.disenio.disenio.Modelo;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 
-import java.time.LocalDateTime;
 
 
 @Entity
@@ -23,10 +22,7 @@ public class ReunionCInt extends ReunionCientifica{
         this.pais = pais;
     }
 
-    public ReunionCInt(String pais, Long id, LocalDateTime fechaInicio, String expositor, String tituloTrabajo, Autor autor) {
-        super(id, fechaInicio, expositor, tituloTrabajo, autor);
-        this.pais = pais;
-    }
+    
     @Override
     public boolean isEliminado() {
         return eliminado;
@@ -36,12 +32,13 @@ public class ReunionCInt extends ReunionCientifica{
         this.eliminado = eliminado;
     }
 
+    public String getPais() {
+        return pais;
+    }
 
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
 
-    
-
- 
-
- 
    
 }

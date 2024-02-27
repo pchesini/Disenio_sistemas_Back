@@ -31,25 +31,26 @@ public class Autor {
     }
     // cada vez que cargamos un autor tenemos que ingresarkle un trabajo,publicacion o Reunion?
     // quizas deberiamos en cada clase Publicacion, trabajo etc asociarlo por parametro a un autor.
-    public Autor(Long id, String nombre, String apellido, Set<ReunionCientifica> reunionesCientificas, Set<ArticuloConReferato> articulosConReferato, Set<Trabajo> trabajo) {
+    public Autor(Long id, String nombre, String apellido, Set<ArticuloConReferato> articulosConReferato, Set<Trabajo> trabajo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.reunionesCientificas = reunionesCientificas;
+       // this.reunionesCientificas = reunionesCientificas;
         this.articulosConReferato = articulosConReferato;
         //this.publicaciones = publicaciones;
         this.trabajos = trabajos;
     }
 
     
-    //cambie multiplicidad
+    /*cambie multiplicidad
     @OneToMany(mappedBy = "autor")
     private Set<ReunionCientifica> reunionesCientificas = new HashSet<>();
-
+*/
     //1 autor a muchos AriculosConR..
    @OneToMany(mappedBy = "autor")
     private Set<ArticuloConReferato> articulosConReferato = new HashSet<>();
-    /*
+    
+   /*
     @OneToMany(mappedBy = "id_autor_publicacion")
     private Set<Publicacion> publicaciones = new HashSet<>();
     */
