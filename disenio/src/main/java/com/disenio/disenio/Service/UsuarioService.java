@@ -21,6 +21,8 @@ public class UsuarioService implements IUsuario {
         return usuarioR.findByEmail(email);
     }
 
+    
+    //Metodo para registrarse
     @Override
     public Usuario altaUsuario(Usuario usuario) {
         Optional <Usuario> exiteUsuario = usuarioR.findByEmail((usuario.getEmail()));
@@ -45,14 +47,5 @@ public class UsuarioService implements IUsuario {
     usuario.setPassword(newPassword);
     return usuarioR.save(usuario);
 }
-
-    @Override
-    public Usuario login(String email, String password) {
-       Usuario usu = usuarioR.findByEmailAndPassword(email, password);
-        if (usu == null || !usu.getPassword().endsWith(password)){
-            throw new AutenticacionException("Correo electrónico o contraseña incorrectos");
-        }
-       return usu;
-        
-    }
+ 
 }

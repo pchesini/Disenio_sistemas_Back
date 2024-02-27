@@ -12,6 +12,6 @@ public interface IUsuario {
     Optional <Usuario> getUsuario(String email);
     public Usuario altaUsuario(Usuario usuario);
     public Usuario modContrasenia(String email, String password);
-    public Usuario login(String email, String Password);
+   // 
    
 }

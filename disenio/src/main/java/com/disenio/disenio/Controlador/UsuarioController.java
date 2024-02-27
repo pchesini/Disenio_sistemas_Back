@@ -31,10 +31,11 @@ public class UsuarioController {
     Usuario usuario = usuarioS.modContrasenia(email, newPassword);
     return usuario;
     }
-     @PostMapping("/login")
-     public UsuarioDto login(@RequestBody Usuario usuario){
-         Usuario usu = usuarioS.login(usuario.getEmail(), usuario.getPassword());
-         UsuarioDto usuDto = new UsuarioDto(usu.getId(), usu.getNombre(), usu.getApellido());
-         return  usuDto;
-     }
+    /*@PostMapping("/modificar")
+    public Usuario modContrasenia(@RequestParam("email") String email,
+                              @RequestBody ModificarContraseniaRequest request) {
+    Usuario usuario = usuarioS.modContrasenia(email, request.getNewPassword());
+    return usuario;
+}*/
+   
 }
